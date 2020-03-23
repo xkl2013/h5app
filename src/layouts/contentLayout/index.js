@@ -1,16 +1,15 @@
 import React from 'react';
-import Header from '../_components/header';
-import Footer from '../_components/footer';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 
-class Content extends React.Component {
-    render() {
-        return (
-            <div>
-                <Header />
-                {this.props.children}
-                <Footer />
-            </div>
-        )
-    }
+function ContentLayout(props) {
+    return (
+        <div>
+            <Header />
+            {props.children}
+            <Footer />
+        </div>
+    );
 }
-export default Content
+
+export default ContentLayout;

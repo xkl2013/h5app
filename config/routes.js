@@ -6,36 +6,48 @@ export const routes = [
         routes: [
             {
                 path: '/',
-                redirect: '/index',
+                redirect: '/course',
             },
             {
-                path: '/index',
-                component: '../layouts/contentLayout',
+                path: '/course',
+                component: './course',
+                title: ' 课程',
+                TabBar: true,
                 routes: [
                     {
-                        path: '/index',
-                        component: './index',
+                        path: '/course/add',
+                        component: './course/add',
+                        TabBar: true,
+                        title: '添加课程',
                     },
                     {
-                        path: '/study',
-                        component: './study',
+                        path: '/course/edit',
+                        component: './course/edit',
+                        // TabBar:true,
+                        title: '编辑课程',
                     },
-                ]
-            },
-            {
-                path: '/login',
-                redirect: '/login/signIn',
-            },
-            {
-                path: '/login',
-                component: '../layouts/loginLayout',
-                routes: [
                     {
-                        path: '/login/signIn',
-                        component: './signIn',
+                        path: '/course/search',
+                        component: './course/search',
+                        TabBar: true,
+                        title: '搜索',
                     },
-                ]
+                ],
             },
         ],
-    }
+    },
+    {
+        path: '/login',
+        redirect: '/login/signIn',
+    },
+    {
+        path: '/login',
+        component: '../layouts/loginLayout',
+        routes: [
+            {
+                path: '/login/signIn',
+                component: './signIn',
+            },
+        ],
+    },
 ];

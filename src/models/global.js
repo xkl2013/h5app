@@ -1,10 +1,9 @@
 // import { message } from 'antd';
 
-
 export default {
     namespace: 'global',
     state: {
-        departmentsList: [], // 组织结构
+        menuMap: {}, // 路由
     },
     effects: {
         * initData(_, { put }) {
@@ -15,8 +14,24 @@ export default {
         },
     },
     reducers: {
+        initMenu(state, { payload }) {
+            const { routes } = payload || {};
+            const menuMap = {};
+            const formateData = (data) => {
+                const item = { ...data };
+                delete item.routes;
+                menuMap[data.path] = item;
+                if (data.routes && Array.isArray(data.routes)) {
+                    data.routes.map((router) => {
+                        return formateData(router);
+                    });
+                }
+            };
+            formateData(routes);
+            return { ...state, menuMap };
+        },
         save(state, { payload }) {
             return { ...state, ...payload };
         },
-    }
+    },
 };

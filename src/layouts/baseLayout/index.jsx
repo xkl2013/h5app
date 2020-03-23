@@ -1,32 +1,33 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
+import { connect } from 'dva';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
-import {
-    LocaleProvider
-} from 'antd-mobile';
-import Content from '../_components/contentLayout';
-import { checkAuth } from '@/utils/auth';
+import { LocaleProvider } from 'antd-mobile';
+import ContentLayout from '../contentLayout';
 /**
- * 
+ *
  * @param {children} props 用于分发子页面
  * 工程统一设置模块在此页面处理
  */
 
-class BasicLayout extends React.Component {
-    // UNSAFE_componentWillMount() {
-    //     // 做相关业务模块登录判断
-    //     const isLogin = checkAuth();
-    //     if (true) {
-    //         // this.props.history.replace('/login')
-    //     }
-    // }
-    render() {
-        return (
-            <LocaleProvider locale={zhCN}>
-                {this.props.children}
-            </LocaleProvider>
-        );
-    }
+function BasicLayout(props) {
+    const { pathname } = props.location;
+    const { menuMap = {} } = props || {};
+    const initMenuData = useCallback(() => {
+        props.dispatch({ type: 'global/initMenu', payload: { routes: props.route } });
+    }, []);
+    useEffect(() => {
+        initMenuData();
+    }, []);
 
+    const renderContent = () => {
+        const hasTabBar = (menuMap[pathname] || {}).TabBar;
+        console.log(hasTabBar);
+        if (!hasTabBar) return props.children;
+        return <ContentLayout>{props.children}</ContentLayout>;
+    };
+    return <LocaleProvider locale={zhCN}>{renderContent()}</LocaleProvider>;
 }
 
-export default BasicLayout;
+export default connect(({ global }) => {
+    return { menuMap: global.menuMap };
+})(BasicLayout);
