@@ -10,10 +10,20 @@ export const routes = [
             },
             {
                 path: '/course',
-                component: './course',
+                component: '../components/renderRouter',
                 title: ' 课程',
                 TabBar: true,
                 routes: [
+                    {
+                        path: '/course',
+                        redirect: '/course/list',
+                    },
+                    {
+                        path: '/course/list',
+                        component: './course/list',
+                        TabBar: true,
+                        title: '课程',
+                    },
                     {
                         path: '/course/add',
                         component: './course/add',
@@ -23,7 +33,7 @@ export const routes = [
                     {
                         path: '/course/edit',
                         component: './course/edit',
-                        // TabBar:true,
+                        TabBar: true,
                         title: '编辑课程',
                     },
                     {

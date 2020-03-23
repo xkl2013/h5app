@@ -1,17 +1,21 @@
 import React from 'react';
-// import { Button } from 'antd-mobile';
 import { connect } from 'dva';
-// import Header from '@/components/header';
-// import Footer from '@/components/footer';
+import Link from 'umi/link';
 
-// import styles from './index.less';
+import styles from './styles.less';
 
 @connect((global) => {
     return { global };
 })
 class Index extends React.Component {
     render() {
-        return <div>默认页面</div>;
+        return (
+            <div className={styles.wrap}>
+                <Link to="/course/add"> 新增课程</Link>
+                <Link to="/course/edit"> 编辑课程</Link>
+                默认页面
+            </div>
+        );
     }
 }
 
