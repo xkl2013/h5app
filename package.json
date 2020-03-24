@@ -5,7 +5,6 @@
     "build": "umi build",
     "test": "umi test",
     "lint": "eslint {src,mock,tests}/**/*.{js,jsx} --fix",
-    "precommit": "lint-staged"
   },
   "dependencies": {
     "react": "^16.8.6",
