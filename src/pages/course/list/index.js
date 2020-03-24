@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import Link from 'umi/link';
-import Search from './components/search';
+import Search from '@/components/searchBar';
 
 import styles from './styles.less';
 
@@ -15,7 +15,10 @@ class Index extends React.Component {
         return (
             <div className={styles.wrap}>
                 <div className={styles.header}>
-                    <Search className={styles.search} />
+                    <span className={styles.search}>
+                        <Search />
+                    </span>
+
                     <Link to="/course/add"> 新增课程</Link>
                 </div>
                 <Link to="/course/edit"> 编辑课程</Link>

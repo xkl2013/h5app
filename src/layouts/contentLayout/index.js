@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
+import Footer from '@/components/TabBar';
+import styles from './styles.less';
+import Setting from '../../../config/setting';
 
 function ContentLayout(props) {
     return (
-        <div>
-            <Header />
-            {props.children}
+        <div className={styles.contentWrap} style={{ paddingBottom: Setting.tabBarHeight }}>
+            <div className={styles.pageContainer}>{props.children}</div>
             <Footer />
         </div>
     );
