@@ -8,7 +8,9 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "moment": "^2.24.0",
     "react": "^16.8.6",
+    "react-calendar": "^3.0.0",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {

@@ -26,7 +26,7 @@ export const webpack = {
                 'border-radius',
                 'font-size',
             ], //这些属性不需要转换
-            selectorBlackList: ['am'], //以包含antd的class不需要转换
+            selectorBlackList: ['am', 'react-calendar'], //以包含antd的class不需要转换
         }),
     ],
     proxy: {},
