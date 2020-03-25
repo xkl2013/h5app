@@ -9,7 +9,7 @@ export const plugins = [
                 // loadingComponent: '../src/components/spin/index.js',
             },
             title: 'guzheng',
-            dll: true,
+            dll: false,
             routes: {
                 exclude: [/models\//, /services\//, /model\.(t|j)sx?$/, /service\.(t|j)sx?$/, /components\//],
             },

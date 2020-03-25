@@ -20,12 +20,11 @@ function BasicLayout(props) {
     }, []);
 
     const renderContent = () => {
-        const hasTabBar = (menuMap[pathname] || {}).TabBar;
-        console.log(hasTabBar);
+        const hasTabBar = (menuMap[pathname] || {}).TabBar || false;
         if (!hasTabBar) return props.children;
         return <ContentLayout>{props.children}</ContentLayout>;
     };
-    return <LocaleProvider locale={zhCN}>{renderContent()}</LocaleProvider>;
+    return<LocaleProvider locale={zhCN}>{renderContent()}</LocaleProvider>;
 }
 
 export default connect(({ global }) => {

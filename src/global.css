@@ -1,6 +1,10 @@
 html, body, #root {
   height: 100%;
 }
+#root{
+  width: 375px;
+  margin: 0 auto;
+}
 
 body {
   margin: 0;
